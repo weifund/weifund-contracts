@@ -1,0 +1,9 @@
+node_modules
+scripts
+docs
+src/lib
+src/tests
+src/contracts/tests
+src/contracts/StandardCampaign.sol
+assets
+dist

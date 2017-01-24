@@ -1,0 +1,90 @@
+{
+  "submitter_name": "Weifund",
+  "SCS_name": "Weifund Platform",
+  "repository": "git+https://github.com/weifund/weifund-contracts",
+  "commit_hash": "",
+  "readiness_score": "80",
+  "test_measures": [
+    { "test_type": "user stories",
+      "specification" : {
+	"URL": "https://docs.google.com/a/consensys.net/spreadsheets/d/1ReFydfda9SxyyV_DC3aa6ti1FaisTcPdPKb9F4PpfHk/edit?usp=drivesdk#gid=0",
+	"version": "1.0"
+      },
+      "test_results" : [{
+        "auth": "public",
+        "URL": "https://docs.google.com/a/consensys.net/spreadsheets/d/1ReFydfda9SxyyV_DC3aa6ti1FaisTcPdPKb9F4PpfHk/edit?usp=drivesdk#gid=0",
+        "version": "1.1"}],
+      "score": "80",
+      "ceiling": "100",
+      "weight": "30"
+    },
+    { "test_type": "runtime analysis",
+      "specification" : {
+	"URL": "https://github.com/shahankhatch/weifund-contracts/blob/b9bb8d4d20718392d8721a3565d194583c6aa921/contracts/__tests__/",
+	"version": "1.0"
+      },
+      "test_results" : [{
+        "auth": "public",
+        "URL": "TODO",
+        "version": "1.1"}],
+      "score": "80",
+      "ceiling": "100",
+      "weight": "30"
+    },
+      { "test_type": "static analysis",
+      "specification" : {
+	"URL": "https://ethereum.github.io/browser-solidity/#version=soljson-v0.3.6+commit.3fc68da.js",
+	"version": "1.0"
+      },
+      "test_results" : [{
+        "auth": "public",
+        "URL": "no serious issues reported",
+        "version": "1.1"}],
+      "score": "100",
+      "ceiling": "100",
+      "weight": "20"
+    },
+      { "test_type": "readiness assessment visual analysis based on Weifund Security Document",
+      "specification" : {
+	"auth": "private",
+	"URL": "https://docs.google.com/a/consensys.net/spreadsheets/d/1QV6Tb49dCKnKyDRlUD2WS5WatrN-_9SMLtt8FlpYv4o/edit?usp=sharing",
+	"version": "1.0"
+      },
+      "test_results" : [{
+        "auth": "public",
+        "URL": "no serious issues reported",
+        "version": "1.1"}],
+      "score": "100",
+      "ceiling": "100",
+      "weight": "30"
+    },
+      { "test_type": "bug bounty program",
+      "specification" : {
+	"auth": "private",
+	"URL": "TODO",
+	"version": "1.0"
+      },
+      "test_results" : [{
+        "auth": "public",
+        "URL": "TODO",
+        "version": "1.1"}],
+      "score": "40",
+      "ceiling": "100",
+      "weight": "20"
+    },
+      { "test_type": "key management",
+      "specification" : {
+	"auth": "private",
+	"URL": "TODO",
+	"version": "1.0"
+      },
+      "test_results" : [{
+        "auth": "public",
+        "URL": "TODO",
+        "version": "1.1"}],
+      "score": "40",
+      "ceiling": "100",
+      "weight": "20"
+    }
+  ]
+}

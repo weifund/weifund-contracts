@@ -1,0 +1,246 @@
+{
+  "name": "weifund-contracts",
+  "version": "2.0.6",
+  "description": "The WeiFund Ethereum smart-contracts.",
+  "scripts": {
+    "npmcheckversion": "node ./internals/scripts/npmcheckversion.js",
+    "test": "npm run test:src",
+    "test:clean": "rimraf ./coverage",
+    "test:lib": "mocha ./lib/tests/**/*.js -R spec --timeout 2000000 --compilers js:babel-core/register",
+    "test:src": "mocha src/tests/**/*.js -R spec --timeout 2000000 --compilers js:babel-core/register",
+    "test:utils": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --optimize 0 --exclude {**.sol} --include {**utils/**}",
+    "test:campaigns": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --optimize 0 --exclude {**.sol} --include '{**campaigns/StandardCampaign.sol,**campaigns/tests/test.StandardCampaign.sol,**campaigns/tests/CampaignUser.sol,**campaigns/Campaign.sol,**enhancers/CampaignEnhancer.sol,**tokens/Token.sol,**enhancers/Enhancer.sol,**utils/Owned.sol,**claims/BalanceClaim.sol,**claims/Claim.sol,**EmptyEnhancer.sol}'",
+    "test:factories": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --optimize 0 --exclude {**.sol} --include {**factories/**,**registries/**,**verifiers/OwnedVerifier.sol,**verifiers/Verifier.sol,**campaigns/Campaign.sol,**campaigns/StandardCampaign.sol,**tokens/Token.sol,**tokens/StandardToken.sol,**tokens/Issued.sol,**tokens/IssuedToken.sol,**claims/**,**enhancers/CampaignEnhancer.sol,**enhancers/EmptyEnhancer.sol,**enhancers/Enhancer.sol,**wallets/MultiSigWallet.sol,**enhancers/Model1Enhancer.sol,**enhancers/Enhancer.sol,**enhancers/CampaignEnhancer.sol,**utils/Owned.sol}",
+    "test:claims": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --optimize 0 --exclude {**.sol} --include {**claims/**,**utils/**}",
+    "test:registries": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --optimize 0 --exclude {**.sol} --include {**registries/**,**utils/**}",
+    "test:tokens": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --optimize 0 --exclude {**.sol} --include {**tokens/**,**utils/**}",
+    "test:wallets": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --optimize 0 --exclude {**.sol} --include {**wallets/**}",
+    "test:verifiers": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --optimize 0 --exclude {**.sol} --include {**utils/Owned.sol,**verifiers/**}",
+    "test:enhancers": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --optimize 0 --exclude {**.sol} --include {**enhancers/**,**claims/**,**campaigns/tests/CampaignUser.sol,**verifiers/OwnedVerifier.sol,**verifiers/Verifier.sol,**tokens/StandardToken.sol,**tokens/Token.sol,**tokens/IssuedToken.sol,**tokens/Issued.sol,**campaigns/StandardCampaign.sol,**campaigns/Campaign.sol,**utils/Owned.sol,**tokens/Token.sol}",
+    "test:contracts:js": "mocha src/**/test.*.js -R spec --compilers js:babel-core/register",
+    "test:contracts": "npm run test:utils && npm run test:verifiers && npm run test:campaigns && npm run test:factories && npm run test:enhancers && npm run test:claims && npm run test:registries && npm run test:tokens && npm run test:wallets",
+    "build:contracts": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --output ./src/lib/contracts.json --optimize 1 --exclude {**tests/**}",
+    "prepublish": "npm run build",
+    "prebuild": "npm run build:clean && npm run test && npm run build:contracts",
+    "build:clean": "npm run test:clean && rimraf ./dist",
+    "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib --copy-files",
+    "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack --config ./internals/webpack/webpack.config.js --progress",
+    "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack --config ./internals/webpack/webpack.config.js --progress",
+    "build:stats": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack --config ./internals/webpack/webpack.config.js --progress --profile --json > dist/stats.json",
+    "build": "npm run build:commonjs && npm run test:lib && npm run build:umd && npm run build:umd:min",
+    "deploy:testnet": "npm run build:contracts && node ./internals/deployment/deploy-testnet-services.js && npm run build",
+    "deploy:mainnet": "npm run build:contracts && node ./internals/deployment/deploy-mainnet-services.js && npm run build",
+    "release": "npmpub",
+    "pretest": "npm run lint",
+    "lint": "npm run lint:js",
+    "lint:eslint": "eslint --ignore-path .gitignore",
+    "lint:js": "npm run lint:eslint -- . ",
+    "lint:solidity": "node ./node_modules/solium/bin/solium.js --dir ./src/contracts",
+    "lint:staged": "lint-staged",
+    "coveralls": "cat ./coverage/lcov/lcov.info | coveralls"
+  },
+  "authors": [
+    "Nick Dodson <nick.dodson@consensys.net>"
+  ],
+  "engines": {
+    "npm": ">=3",
+    "node": ">=6.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/weifund/weifund-contracts.git"
+  },
+  "main": "lib/index.js",
+  "files": [
+    "internals",
+    "lib",
+    "src",
+    "!**/tests"
+  ],
+  "keywords": [
+    "weifund",
+    "contracts",
+    "dapp",
+    "ethereum"
+  ],
+  "license": "TBA",
+  "dependencies": {
+    "assign-deep": "^0.4.5",
+    "web3": "0.17.0-beta"
+  },
+  "devDependencies": {
+    "babel-cli": "6.10.1",
+    "babel-core": "6.7.7",
+    "babel-eslint": "6.0.4",
+    "babel-loader": "6.2.8",
+    "babel-plugin-check-es2015-constants": "6.8.0",
+    "babel-plugin-transform-es2015-arrow-functions": "6.8.0",
+    "babel-plugin-transform-es2015-block-scoped-functions": "6.8.0",
+    "babel-plugin-transform-es2015-block-scoping": "6.18.0",
+    "babel-plugin-transform-es2015-classes": "6.18.0",
+    "babel-plugin-transform-es2015-computed-properties": "6.8.0",
+    "babel-plugin-transform-es2015-destructuring": "6.19.0",
+    "babel-plugin-transform-es2015-for-of": "6.18.0",
+    "babel-plugin-transform-es2015-function-name": "6.9.0",
+    "babel-plugin-transform-es2015-literals": "6.8.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "6.18.0",
+    "babel-plugin-transform-es2015-object-super": "6.8.0",
+    "babel-plugin-transform-es2015-parameters": "6.18.0",
+    "babel-plugin-transform-es2015-shorthand-properties": "6.18.0",
+    "babel-plugin-transform-es2015-spread": "6.8.0",
+    "babel-plugin-transform-es2015-sticky-regex": "6.8.0",
+    "babel-plugin-transform-es2015-template-literals": "6.8.0",
+    "babel-plugin-transform-es2015-unicode-regex": "6.11.0",
+    "babel-plugin-transform-es3-member-expression-literals": "6.5.0",
+    "babel-plugin-transform-es3-property-literals": "6.5.0",
+    "babel-plugin-transform-object-rest-spread": "6.19.0",
+    "babel-preset-es2015": "6.6.0",
+    "babel-preset-stage-0": "6.5.0",
+    "babel-register": "6.18.0",
+    "babelify": "7.3.0",
+    "bignumber.js": "2.4.0",
+    "browserify": "13.1.1",
+    "bs58": "^4.0.0",
+    "chai": "3.5.0",
+    "chaithereum": "2.0.6",
+    "check-es3-syntax-cli": "0.1.3",
+    "coveralls": "2.11.9",
+    "cross-env": "1.0.7",
+    "eslint": "2.10.1",
+    "eslint-config-airbnb": "9.0.1",
+    "eslint-import-resolver-webpack": "0.2.4",
+    "eslint-plugin-import": "1.8.0",
+    "eslint-plugin-jsx-a11y": "1.2.0",
+    "eslint-plugin-react": "5.1.1",
+    "ethdeploy": "0.1.5",
+    "ethdeploy-provider-http": "0.1.1",
+    "ethdeploy-provider-zero-client": "0.1.9",
+    "ethereumjs-testrpc": "2.0.8",
+    "ethereumjs-tx": "1.1.2",
+    "ethereumjs-util": "4.5.0",
+    "ethjs": "0.1.7",
+    "ethjs-provider-signer": "0.1.3",
+    "ethjs-signer": "0.1.1",
+    "eventsource-polyfill": "0.9.6",
+    "ipfs-mini": "1.0.1",
+    "json-loader": "0.5.4",
+    "jsonpath": "0.2.6",
+    "lint-staged": "1.0.1",
+    "lodash": "4.13.1",
+    "minimist": "1.2.0",
+    "mocha": "2.4.5",
+    "pre-commit": "1.1.3",
+    "rimraf": "2.5.2",
+    "sinon": "2.0.0-pre",
+    "solium": "0.1.16",
+    "wafr": "0.3.5",
+    "web3-provider-engine": "8.1.17",
+    "webpack": "2.1.0-beta.15"
+  },
+  "babel": {
+    "plugins": [
+      [
+        "transform-es2015-template-literals",
+        {
+          "loose": true
+        }
+      ],
+      "transform-es2015-literals",
+      "transform-es2015-function-name",
+      "transform-es2015-arrow-functions",
+      "transform-es2015-block-scoped-functions",
+      [
+        "transform-es2015-classes",
+        {
+          "loose": true
+        }
+      ],
+      "transform-es2015-object-super",
+      "transform-es2015-shorthand-properties",
+      [
+        "transform-es2015-computed-properties",
+        {
+          "loose": true
+        }
+      ],
+      [
+        "transform-es2015-for-of",
+        {
+          "loose": true
+        }
+      ],
+      "transform-es2015-sticky-regex",
+      "transform-es2015-unicode-regex",
+      "check-es2015-constants",
+      [
+        "transform-es2015-spread",
+        {
+          "loose": true
+        }
+      ],
+      "transform-es2015-parameters",
+      [
+        "transform-es2015-destructuring",
+        {
+          "loose": true
+        }
+      ],
+      "transform-es2015-block-scoping",
+      "transform-object-rest-spread",
+      "transform-es3-member-expression-literals",
+      "transform-es3-property-literals"
+    ],
+    "env": {
+      "commonjs": {
+        "plugins": [
+          [
+            "transform-es2015-modules-commonjs",
+            {
+              "loose": true
+            }
+          ]
+        ]
+      }
+    }
+  },
+  "lint-staged": {
+    "lint:eslint": "*.js"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "env": {
+      "node": true,
+      "mocha": true,
+      "es6": true
+    },
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module"
+    },
+    "rules": {
+      "import/no-unresolved": 2,
+      "comma-dangle": [
+        2,
+        "always-multiline"
+      ],
+      "indent": [
+        2,
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "no-console": 1,
+      "max-len": 0,
+      "prefer-template": 2,
+      "no-use-before-define": 0,
+      "newline-per-chained-call": 0,
+      "arrow-body-style": [
+        2,
+        "as-needed"
+      ]
+    }
+  },
+  "pre-commit": "lint:staged"
+}
