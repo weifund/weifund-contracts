@@ -2,13 +2,13 @@
 
 Thank you for visiting the WeiFund Bug Bounty.
 
-WeiFund is crowdfunding infrastructure on and for the Ethereum ecosystem. Successful bug hunters will be rewarded with both ether and recognition on our website and github page (See Rewards & Rules section for details).
+WeiFund is crowdfunding infrastructure on and for the Ethereum ecosystem. Successful bug hunters will be rewarded with up to $5,000 in ether and recognition on our website and github page (See Rewards & Rules section below for details).
 
 Below you'll find all the details on this program. If you've already read this information and have found a bug you'd like to submit to WeiFund for review, please use this form: [Submit a Bug](https://goo.gl/forms/R0w3vaKdjv3s7SqY2).
 
-A great place to learn about our platform's technical design and operation is in our [concise Documentation](https://weifund.readthedocs.io/en/latest/).
+A great place to learn about our platform's technical design and operation is in our [concise documentation](https://weifund.readthedocs.io/en/latest/).
 
-In addition to reviewing our github repositories, bounty hunters may wish to attempt to hack two live honey pots; [WeiFund is live on the mainnet with two bug bounty campaigns](https://weifund.surge.sh). WeiFund will be funding these campaigns over the course of the next two weeks.
+In addition to reviewing our github repositories, [two WeiFund campaigns](https://weifund.surge.sh) serving as honey pots, are already live on the mainnet. WeiFund will be funding these campaigns over the course of the next two weeks.
 
 
 Table of Contents | Details |
@@ -19,7 +19,7 @@ Table of Contents | Details |
 **Details of Deployed Campaigns and Contracts** |Information on the honey pot campaign contracts|
 **FAQ**|
 **Legal**|
-**Join the Mailing List** | receive updates on bug bounties |
+**Join the Mailing List** | Receive updates on bug bounties |
 
 ##Rewards
 
@@ -52,23 +52,15 @@ Beyond monetary rewards, every bounty hunter is also eligible for being listed o
 
 ##Targets
 
-**In scope:**
+### In scope:
 
-* [Smart Contracts :](https://github.com/weifund/weifund-contracts/tree/develop/src/contracts) https://github.com/weifund/weifund-contracts/tree/develop/src/contracts
-* [dApp browser code:] (https://github.com/weifund/weifund-dapp-basic_) https://github.com/weifund/weifund-dapp-basic
-* [Light Wallet:] (https://github.com/ConsenSys/eth-lightwallet/tree/bdaa1e86134a0c3dddd423ebfc1b588837715d01/lib_) https://github.com/ConsenSys/eth-lightwallet/tree/bdaa1e86134a0c3dddd423ebfc1b588837715d01/lib
-* [Web3 Provider:](https://github.com/ConsenSys/hooked-web3-provider/blob/3ae3a4846cb56a9027696c97db6d6e19a9694c1c/app/hooked-web3-provider.es6) https://github.com/ConsenSys/hooked-web3-provider/blob/3ae3a4846cb56a9027696c97db6d6e19a9694c1c/app/hooked-web3-provider.es6
-* [Multisig-Wallet:](https://github.com/ConsenSys/MultiSigWallet)
+* **Smart Contracts**: https://github.com/weifund/weifund-contracts/tree/develop/src/contracts
+* **dApp browser code**: https://github.com/weifund/weifund-dapp-basic
+* **Light Wallet**: https://github.com/ConsenSys/eth-lightwallet/tree/bdaa1e86134a0c3dddd423ebfc1b588837715d01/lib
+* **Web3 Provider**: https://github.com/ConsenSys/hooked-web3-provider/blob/3ae3a4846cb56a9027696c97db6d6e19a9694c1c/app/hooked-web3-provider.es6
+* **Multisig-Wallet**: https://github.com/ConsenSys/MultiSigWallet
 
-**Out of scope:**
-
-* Bugs related to Internet Explorer and browser-based issues
-* All browser rendering bugs that don't affect the display of critical information
-* Most user experience improvements on the frontend
-* WeiFund's website: WeiFund.io
-* Attacks via social engineering
-
-**Examples of what’s in scope**
+**Examples of what's in scope** 
 
 * Being able to obtain more tokens than expected
 * Being able to obtain tokens from someone without their permission
@@ -78,13 +70,23 @@ Beyond monetary rewards, every bounty hunter is also eligible for being listed o
 * Bugs that lead to tokens being claimed before they should be
 * Bugs that lead to the wrong amount of funds being refunded when a campaign is not successful
 
-**Examples of what’s out of scope**
+
+### Out of scope:
+
+* Bugs related to Internet Explorer and browser-based issues
+* All browser rendering bugs that don't affect the display of critical information
+* Most user experience improvements on the frontend
+* WeiFund's website: WeiFund.io
+* Attacks via social engineering
+
+
+**Examples of what's out of scope**
 
 * Most user experience improvements on the frontend, for example some part of the website doesn't update unless the page is refreshed
 
 ##Details of Deployed Campaigns and Contracts
 
-The campaigns will be on Ethereum’s Main Net and be constructd using our smart contract templates: two “Standard Campaigns” with “Enhancer Contracts” that issue tokens for each contribution. The **Fail Token** campaign will have a funding goal of 10,000 ether and the **Success Token** campaign will have a funding goal of 150 ether with a funding cap of 5000 ether. The Fail Token campaign will fail in raising the required funds and will refund all of its contributors. The Success Token campaign will succeed, and the tokens will be frozen for a limited time before being unfrozen and distributed. The ether funds in the Success Token campaign contract will be sent to a multisig beneficiary.
+The campaigns will be on Ethereum’s Main Net and be constructed using our smart contract templates: two “Standard Campaigns” with “Enhancer Contracts” that issue tokens for each contribution. The **Fail Token** campaign will have a funding goal of 10,000 ether and the **Success Token** campaign will have a funding goal of 150 ether with a funding cap of 5000 ether. The Fail Token campaign will fail in raising the required funds and will refund all of its contributors. The Success Token campaign will succeed, and the tokens will be frozen for a limited time before being unfrozen and distributed. The ether funds in the Success Token campaign contract will be sent to a multisig beneficiary.
 
 ###Campaign1
 
@@ -113,7 +115,7 @@ The campaigns will be on Ethereum’s Main Net and be constructd using our smart
 
 ##FAQ
 
-###what should a good vulnerability submission look like?
+###What should a good vulnerability submission look like?
 
 Here is an example of a real issue which was previously identified
 
