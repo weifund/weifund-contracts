@@ -2,7 +2,15 @@
 node_modules
 dist
 lib
-!*src/lib/*
+!*src/lib*
+!src/lib/*/
+!./src/lib/*
+!./src/lib/campaign.json
+!./src/lib/contracts.json
+!./src/lib/environments.json
+!*src/lib/campaign.json
+!*src/lib/contracts.json
+!*src/lib/environments.json
 
 # Cruft
 .DS_Store
