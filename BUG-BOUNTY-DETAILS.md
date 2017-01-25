@@ -86,32 +86,93 @@ Beyond monetary rewards, every bounty hunter is also eligible for being listed o
 
 ##Details of Deployed Campaigns and Contracts
 
-The campaigns will be on Ethereum’s Main Net and be constructed using our smart contract templates: two “Standard Campaigns” with “Enhancer Contracts” that issue tokens for each contribution. The **Fail Token** campaign will have a funding goal of 10,000 ether and the **Success Token** campaign will have a funding goal of 150 ether with a funding cap of 5000 ether. The Fail Token campaign will fail in raising the required funds and will refund all of its contributors. The Success Token campaign will succeed, and the tokens will be frozen for a limited time before being unfrozen and distributed. The ether funds in the Success Token campaign contract will be sent to a multisig beneficiary.
+The campaigns will be on Ethereum’s Main Net and be constructed using our smart contract templates: two “Standard Campaigns” with “Enhancer Contracts” that issue tokens for each contribution. The **Fail Token** campaign will have a funding goal of 10,000 ether and the **Success Token** campaign will have a funding goal of 150 ether with a funding cap of 5000 ether. 
 
-###Campaign1
+The Fail Token campaign will fail in raising the required funds and will refund all of its contributors. 
 
-* Name: Bug Bounty FailToken Campaign
-* Contracts
-    * IssuedToken(freezePeriod=???, name=FailToken, decimals=18, symbol=BBFT)
-        * setIssuer(enhancer)
-    * Model1Enhancer(tokenPrice=1 wei?, freezePeriod=???, token=token)
-    * StandardCampaign(name=”FailToken Campaign”, expiry=???, fundingGoal=10,000 ether, beneficiary=multisig, enhancer=enhancer)
-* Addresses
-    * [main net addresses]
-* Multisig Wallet
+The Success Token campaign will succeed, and the tokens will be frozen for a limited time before being unfrozen and distributed. The ether funds in the Success Token campaign contract will be sent to a multisig beneficiary.
 
-###Campaign2:
+### Bug Bounty Fail Token Campaign
 
-* Name: Bug Bounty SuccessToken Campaign
-* Contracts
-    * IssuedToken(freezePeriod=???, name=SuccessToken, decimals=18, symbol=BBST)
-        * setIssuer(enhancer)
-    * Model1Enhancer(tokenPrice=1 wei?, freezePeriod=0?, token=token)
-    * StandardCampaign(name=”SuccessToken Campaign”, expiry=???, fundingGoal=150 ether, beneficiary=multisig, enhancer=enhancer)
-* Addresses
-    * [main net addresses]
-* Beneficiary
-    * Same as above
+The following section describes the parameters of the campaign which will fail to reach its fundraising goal.
+
+#### Contract Addresses
+
+* __Campaign__: 0x0a6794fb71a4f567e6eb432ade293db7faf4b8d8
+* __Enhancer__: 0xb1d393bbf102e60b62f53de35a9a107d9cb06b74
+* __Multisig Wallet__: 0x850b2ecd566748c04b51d7effd3d27a8155b5879
+* __Issued Token__: 0x2fce5b93ee7ee3ba5707112d7b4d34edadad0930
+
+
+#### Standard Campaign Contract
+
+* __Name__: Fail Token Campaign
+* __Funding Goal__: 10,000 ETH
+* __Funding Cap__: 20,000 ETH
+* __Expiry__: 14 days (Block #3127930)
+* __Beneficiary__: Multisig Wallet
+
+#### Enhancer Contract
+
+The campaign token is issued by the Model1Enhancer contract, which is used to issue tokens against a linear price and solid cap, it has the following parameters:
+
+* __Token cap__: 160,000
+* __Token price__: 0.125 ETH
+* __Freeze period__: 16 days (Block #3127941)
+
+#### Issued Token Contract
+
+* __Name__: Fail Tokens
+* __Symbol__: FT
+* __Freeze period__: None
+* __Decimals__: 2
+
+
+### Bug Bounty Success Token Campaign
+
+The following section describes the parameters of the campaign which will succeed in reaching its fundraising goal.
+
+#### Contract Addresses
+
+* __Campaign__: 0x3dc95a72717a1f27657c3b7ef060a8f3f68e0be4
+* __Enhancer__: 0x725cfbffab60e77b8ea38c870c75b78efed50a51
+* __Multisig Wallet__: 0x0489dc264e4188557d85db716cc6150e61c6491c
+* __Issued Token__: 0xea42a626bacfe7db13fa5f8cd0568bf2b67f52d7
+
+#### StandardCampaign Contract
+
+* __Name__: Success Token Campaign
+* __Funding Goal__: 150 ETH
+* __Funding Cap__: 5000 ETH
+* __Expiry__: 14 days (Block #3127966)
+* __Beneficiary__: Multisig Wallet
+
+#### Enhancer Contract
+
+The campaign token is issued by the Model1Enhancer contract, which is used to issue tokens against a linear price and solid cap, it has the following parameters:
+
+* __Token cap__: 40000
+* __Token price__: 0.125 ETH
+* __Freeze period__: 16 days (Block #3127973)
+
+#### Issued Token Contract
+
+* __Name__: Success Tokens
+* __Symbol__: ST
+* __Freeze period__: None
+* __Decimals__: 10
+
+### Shared Services
+
+Both campaigns share a set of service contracts. 
+
+* __Campaign Registry__: 0x16f771d64556d52cdef433ca96c696861317956e
+* __Data Registry__: 0x7c17b1e6b4578152901c54d05b0464611bcb517c
+* __Wallet Factory__: x4a176d9335f4f8e07e007ac5d3b3e72335cd9bb0
+* __Token Factory__: 0xb455014982ed2b280b72f2228381b8f428373646
+* __Enhancer Factory__: 0x55c5afdfc5dde98052ef1874ba6af273f45f0280
+* __Campaign Factory__: 0x32234de40715073c70bf83415096e9e9265b6878
+
 
 ##FAQ
 
