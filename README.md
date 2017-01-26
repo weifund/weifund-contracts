@@ -34,6 +34,8 @@ A module containing all WeiFund platform Ethereum smart-contracts.
 
 ## Install
 
+You must have an `account.json` file directly outside this repo, with your account `{"address": "0x00..", "privateKey": "0x000..."}` specified.
+
 ```
 git clone http://github.com/weifund/weifund-contracts
 cd weifund-contracts

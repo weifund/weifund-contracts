@@ -2,7 +2,7 @@ const Eth = require('ethjs');
 const SignerProvider = require('ethjs-provider-signer');
 const sign = require('ethjs-signer').sign;
 const contracts = require('../../src/lib/contracts.json');
-const account = require('../../../../account.json');
+const account = require('../../../account.json');
 
 const environment = 'ropsten';
 const campaignAddress = '0x301241bea2b33306f1fdcf3fc52c103b5892e50b';
