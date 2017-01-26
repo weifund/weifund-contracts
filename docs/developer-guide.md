@@ -4,6 +4,8 @@ All information regarding contributing to and progressing weifund-contracts modu
 
 ## Install from Source
 
+You must have an `account.json` file directly outside this repo, with your account `{"address": "0x00..", "privateKey": "0x000..."}` specified.
+
 ```
 git clone http://github.com/weifund/weifund-contracts
 npm install
@@ -299,18 +301,18 @@ WeiFund uses several registries which are open simple modules. The registry cont
 
 All essential WeiFund factory and registry contracts can be deployed easily deployment scripts, found in the [deployment](../../../blob/master/internals/deployment/) dir.
 
-You must have an `account.json` file directly outside this repo, with your account `{"address": "0x00..", "privateKey": "000..."}` specified.
+You must have an `account.json` file directly outside this repo, with your account `{"address": "0x00..", "privateKey": "0x000..."}` specified.
 
-  ### Testnet:
-
-  ```
-  npm run deploy:testnet
-  ```
-
-  ### Mainnet:
+### Testnet:
 
   ```
   npm run deploy:testnet
+  ```
+
+### Mainnet:
+
+  ```
+  npm run deploy:mainnet
   ```
 
   This will generate and/or modify an [`environments.json`](../../../blob/master/src/lib/environments.json) file.
