@@ -54,7 +54,7 @@ Beyond monetary rewards, every bounty hunter is also eligible for being listed o
 
 ### In scope:
 
-* **Smart Contracts**: https://github.com/weifund/weifund-contracts/tree/develop/src/contracts
+* **Smart Contracts**: https://github.com/weifund/weifund-contracts/tree/master/src/contracts
 * **dApp browser code**: https://github.com/weifund/weifund-dapp-basic
 * **Light Wallet**: https://github.com/ConsenSys/eth-lightwallet/tree/bdaa1e86134a0c3dddd423ebfc1b588837715d01/lib
 * **Web3 Provider**: https://github.com/ConsenSys/hooked-web3-provider/blob/3ae3a4846cb56a9027696c97db6d6e19a9694c1c/app/hooked-web3-provider.es6
