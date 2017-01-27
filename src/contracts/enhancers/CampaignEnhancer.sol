@@ -14,7 +14,7 @@ import "campaigns/Campaign.sol";
 import "enhancers/Enhancer.sol";
 
 
-/// @title Campaign enahncer contract for build campaign enhancers
+/// @title Campaign enhancer contract for build campaign enhancers
 /// @author Nick Dodson <nick.dodson@consensys.net>
 contract CampaignEnhancer is Owned {
   enum Stages {
