@@ -1,7 +1,7 @@
 const Web3 = require('web3');
 const SignerProvider = require('ethjs-provider-signer');
 const sign = require('ethjs-signer').sign;
-const account = require('../../../../account.json');
+const account = require('../../../../account.json'); // eslint-disable-line
 const Contracts = require('../../src/index.js');
 
 const environment = 'ropsten';

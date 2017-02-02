@@ -21,7 +21,7 @@ contract CampaignDataRegistryInterface {
   /// @param _data the data store of that campaign, potentially an ipfs hash
   function register(address _campaign, bytes _data) public;
 
-  /// @notice call `storedDate` to retrieve data specified for a campaign address
+  /// @notice call `storedData` to retrieve data specified for a campaign address
   /// @param _campaign the address of the crowdfunding campaign
   /// @return the data stored in bytes
   function storedData(address _campaign) constant public returns (bytes dataStored);

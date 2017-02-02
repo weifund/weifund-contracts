@@ -26,18 +26,18 @@ contract CampaignRegistryInterface {
   /// @return returns the newly created campaign ID 'campaignID'
   function register(address _campaign, address _interface) public returns (uint256 campaignID);
 
-  /// @notice call to get the campaign id 'camapignID' of campaign address '_campaign'
+  /// @notice call to get the campaign id 'campaignID' of campaign address '_campaign'
   /// @param _campaign the address of the campaign contract
   /// @return the campaign ID 'campaignID' as a UINT256.
   function idOf(address _campaign) constant public returns (uint256 campaignID);
 
   /// @notice call to get the interface address 'interface' of campaign '_campaignID'
   /// @param _campaignID the campaign ID
-  /// @return the interface address of the camapign
+  /// @return the interface address of the campaign
   function abiOf(uint256 _campaignID) constant public returns (address abi);
 
   /// @notice call to ge the UNIX timestamp 'registered' of when a campaign was registered
-  /// @param _campaignID the camapign ID
+  /// @param _campaignID the campaign ID
   /// @return the UNIX timestamp of when the campaign contract was registered
   function registeredAt(uint256 _campaignID) constant public returns (uint256 registered);
 

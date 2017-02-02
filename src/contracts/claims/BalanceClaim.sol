@@ -4,8 +4,8 @@ This file is part of WeiFund.
 
 /*
 The balance claim is used for dispersing balances of refunds for standard
-camaign contracts. Instead of the contract sending a balance directly to the
-contributor, it will send the balance to a balancelciam contract.
+campaign contracts. Instead of the contract sending a balance directly to the
+contributor, it will send the balance to a BalanceClaim contract.
 */
 
 pragma solidity ^0.4.4;
