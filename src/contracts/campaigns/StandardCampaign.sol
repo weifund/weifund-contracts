@@ -67,8 +67,8 @@ contract StandardCampaign is Owned, Campaign {
 
     // if the refund has already been claimed or the refund sender is not the
     // current message sender, throw error
-    if(refundsClaimed[_contributionID] == true // the refund for this contribution is not claimed
-      || refundContribution.sender != msg.sender){ // the contribution sender is the msg.sender
+    if(refundsClaimed[_contributionID] == true // the refund for this contribution is claimed
+      || refundContribution.sender != msg.sender){ // the contribution sender is not the msg.sender
       throw;
     } else {
       // all is good, carry on with state changing operations
@@ -143,7 +143,7 @@ contract StandardCampaign is Owned, Campaign {
 
     // notate the contribution with the campaign enhancer, if the notation
     // method returns true, then trigger an early success
-    // the enahncer is treated as malicious here, and is thus wrapped in a
+    // the enhancer is treated as malicious here, and is thus wrapped in a
     // conditional for saftey, note the enhancer may throw as well
     if (enhancer.notate(msg.sender, msg.value, block.number, _amounts)) {
       // set early success to true, note, it cannot be reversed once set to true
@@ -230,13 +230,13 @@ contract StandardCampaign is Owned, Campaign {
     // the campaign expiry in blocks
     expiry = _expiry;
 
-    // the fundign goal in wei
+    // the funding goal in wei
     fundingGoal = _fundingGoal;
 
     // the campaign funding cap in wei
     fundingCap = _fundingCap;
 
-    // the benerifiary address
+    // the beneficiary address
     beneficiary = _beneficiary;
 
     // the owner or operator of the campaign
