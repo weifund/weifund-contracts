@@ -202,7 +202,7 @@ contract TestStandardCampaign_stageSuccess_earlySuccessTriggered is Test {
   function test_a5_validPayoutToBeneficiary() {
     uint prevBalance = this.balance;
     uint campBalance = target.balance;
-    target.payoutToBeneficiary();
+    target.payoutToBeneficiary(true);
     assertEq(target.fundingGoal(), 2423423, "funding goal is correct");
     assertEq(target.fundingCap(), 7445645647, "funding cap is correct");
     assertEq(this.balance, prevBalance + campBalance, "balance increased");
@@ -456,7 +456,7 @@ contract TestStandardCampaign_stageSuccess_goalReached is Test {
   // uint
   function test_a4_valid_payoutToBeneficiary() {
     uint previousBalance = this.balance;
-    target.payoutToBeneficiary();
+    target.payoutToBeneficiary(true);
     assertEq(target.balance, 0, "target balance is zero");
     assertEq(this.balance, previousBalance + uint(1 + 233 + 21 + 897345), "target balance is zero");
     assertEq(uint(target.stage()), uint(2), "stage is success");
@@ -661,7 +661,7 @@ contract TestStandardCampaign_stageOperational is Test {
   function test_a7_validPanicBeneficiaryPayout() {
     uint initialBalance = this.balance;
     uint balanceInCampaign = target.balance;
-    target.payoutToBeneficiary();
+    target.payoutToBeneficiary(true);
     assertEq(uint(target.stage()), uint(2), "stage is set to success");
     assertEq(uint(target.balance), uint(0), "balance is now zero");
     assertEq(uint(this.balance), uint(initialBalance + balanceInCampaign), "balance is increased");

@@ -1,6 +1,6 @@
 {
   "name": "weifund-contracts",
-  "version": "2.0.6",
+  "version": "2.0.7",
   "description": "The WeiFund Ethereum smart-contracts.",
   "scripts": {
     "npmcheckversion": "node ./internals/scripts/npmcheckversion.js",

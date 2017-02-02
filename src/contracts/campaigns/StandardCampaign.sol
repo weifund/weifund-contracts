@@ -157,12 +157,12 @@ contract StandardCampaign is Owned, Campaign {
 
   // payout the current balance to the beneficiary, if the crowdfund is in
   // stage success
-  function payoutToBeneficiary() public onlybeneficiary() {
+  function payoutToBeneficiary(bool _earlySuccess) public onlybeneficiary() {
     // additionally trigger early success, this will force the Success state
     // forcing the success state keeps the contract state machine rigid
     // and ensures other third-party contracts that look to this state
     // that this contract is in state success
-    earlySuccess = true;
+    earlySuccess = _earlySuccess;
 
     // send funds to the benerifiary
     if (!beneficiary.send(this.balance)) {

@@ -159,7 +159,7 @@ contract CampaignUser {
   }
 
   function payoutToBeneficiary(address _campaign) public {
-    StandardCampaign(_campaign).payoutToBeneficiary.gas(3000000)();
+    StandardCampaign(_campaign).payoutToBeneficiary.gas(3000000)(true);
   }
 
   function claimTokens(address _target) public {
