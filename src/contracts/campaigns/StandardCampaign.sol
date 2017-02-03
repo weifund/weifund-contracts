@@ -165,7 +165,7 @@ contract StandardCampaign is Owned, Campaign {
     earlySuccess = _earlySuccess;
 
     // send funds to the benerifiary
-    if (!beneficiary.send(this.balance)) {
+    if (!beneficiary.call.value(this.balance)()) {
       throw;
     } else {
       // fire the BeneficiaryPayoutClaimed event
