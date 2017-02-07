@@ -1,3 +1,7 @@
+# 2.0.8 -- contract updates
+
+1. Minor contract updates (payout mechanism and changePrice for Model1)
+
 # 2.0.6 -- wallet contract updates
 
 1. MultiSig Wallet Contract Update

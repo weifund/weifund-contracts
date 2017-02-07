@@ -316,7 +316,7 @@ contract StandardCampaign is Owned, Campaign {
   string constant public contributeMethodABI = "contributeMsgValue(uint256[]):(uint256)";
 
   // the payout to beneficiary ABI, written in standard solidity ABI format
-  string constant public payoutMethodABI = "payoutToBeneficiary()";
+  string constant public payoutMethodABI = "payoutToBeneficiary(bool)";
 
   // the refund method ABI, written in standard solidity ABI format
   string constant public refundMethodABI = "claimRefundOwed(uint256):(address)";

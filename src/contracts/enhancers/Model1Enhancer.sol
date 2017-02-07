@@ -118,7 +118,7 @@ contract Model1Enhancer is Owned, Claim, CampaignEnhancer {
 
   /// @notice allow owner to change price in the enhancer
   /// @dev change the price of the enhancer
-  function changePrice(uint256 _price) public constant onlyowner() {
+  function changePrice(uint256 _price) public onlyowner() {
     price = _price;
   }
 
