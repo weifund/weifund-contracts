@@ -19,6 +19,7 @@
     "test:enhancers": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --optimize 0 --exclude {**.sol} --include {**enhancers/**,**claims/**,**campaigns/tests/CampaignUser.sol,**verifiers/OwnedVerifier.sol,**verifiers/Verifier.sol,**tokens/StandardToken.sol,**tokens/Token.sol,**tokens/IssuedToken.sol,**tokens/Issued.sol,**campaigns/StandardCampaign.sol,**campaigns/Campaign.sol,**utils/Owned.sol,**tokens/Token.sol}",
     "test:contracts:js": "mocha src/**/test.*.js -R spec --compilers js:babel-core/register",
     "test:contracts": "npm run test:utils && npm run test:verifiers && npm run test:campaigns && npm run test:factories && npm run test:enhancers && npm run test:claims && npm run test:registries && npm run test:tokens && npm run test:wallets",
+    "test:braid": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --optimize 0 --exclude {**.sol} --include {**utils/Owned.sol,**verifiers/OwnedVerifier.sol,**verifiers/Verifier.sol,**tokens/StandardToken.sol,**tokens/Token.sol,**campaigns/BraidCampaign.sol,**campaigns/tests/test.BraidCampaign.sol}",
     "build:contracts": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --output ./src/lib/contracts.json --optimize 1 --exclude {**tests/**}",
     "prepublish": "npm run build",
     "prebuild": "npm run build:clean && npm run test && npm run build:contracts",
