@@ -1,6 +1,6 @@
 {
   "name": "weifund-contracts",
-  "version": "2.0.8",
+  "version": "2.0.9",
   "description": "The WeiFund Ethereum smart-contracts.",
   "scripts": {
     "npmcheckversion": "node ./internals/scripts/npmcheckversion.js",
@@ -20,7 +20,7 @@
     "test:contracts:js": "mocha src/**/test.*.js -R spec --compilers js:babel-core/register",
     "test:contracts": "npm run test:utils && npm run test:verifiers && npm run test:campaigns && npm run test:factories && npm run test:enhancers && npm run test:claims && npm run test:registries && npm run test:tokens && npm run test:wallets",
     "test:braid": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --optimize 0 --exclude {**.sol} --include {**utils/Owned.sol,**verifiers/OwnedVerifier.sol,**verifiers/Verifier.sol,**tokens/StandardToken.sol,**tokens/Token.sol,**campaigns/BraidCampaign.sol,**campaigns/tests/test.BraidCampaign.sol}",
-    "build:contracts": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --output ./src/lib/contracts.json --optimize 1 --exclude {**tests/**}",
+    "build:contracts": "node ./node_modules/wafr/bin/wafr.js ./src/contracts --output ./src/lib/contracts.json --optimize 0 --exclude {**tests/**}",
     "prepublish": "npm run build",
     "prebuild": "npm run build:clean && npm run test && npm run build:contracts",
     "build:clean": "npm run test:clean && rimraf ./dist",

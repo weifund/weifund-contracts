@@ -2,7 +2,7 @@ const Eth = require('ethjs');
 const sign = require('ethjs-signer').sign;
 const fs = require('fs');
 const contracts = require('../../src/lib/contracts.json');
-const account = require('../../../../account.json'); // eslint-disable-line
+const account = require('../../../account.json'); // eslint-disable-line
 const outputFileJSON = './src/lib/environments.json';
 const currentEnvironmentsOutput = require('../../src/lib/environments.json');
 const getTransactionSuccess = require('./utils.js').getTransactionSuccess;
@@ -13,6 +13,8 @@ const zeroClientProvider = require('web3-provider-engine/zero'); // eslint-disab
 
 const environment = 'mainnet';
 const rpcUrl = 'https://mainnet.infura.io';
+
+console.log('Account being used: ', account.address); // eslint-disable-line
 
 const provider = zeroClientProvider({
   rpcUrl,
